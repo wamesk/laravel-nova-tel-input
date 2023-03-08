@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Wame\\ApiResponse\\": "src/"
+      "Wame\\LaravelNovaTelInput\\": "src/"
     }
   },
   "minimum-stability": "dev",
