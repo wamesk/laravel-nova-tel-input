@@ -11,5 +11,5 @@ class TelInput extends Field
      *
      * @var string
      */
-    public $component = 'tel-input';
+    public $component = 'tel-input-field';
 }

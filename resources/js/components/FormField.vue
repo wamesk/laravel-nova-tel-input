@@ -7,7 +7,7 @@
             :full-width-content="fullWidthContent"
         >
 
-            <template #field class="bg-green-300 dark:bg-red-400" >
+            <template #field >
                 <vue-tel-input :theme="theme" id="tel" v-model="phone" mode="national" v-bind="bindProps"></vue-tel-input>
             </template>
 
