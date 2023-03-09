@@ -1,9 +1,12 @@
 {
     "name": "wamesk/tel-input",
-    "description": "A Laravel Nova field.",
+    "description": "Laravel Nova Phone Field.",
     "keywords": [
         "laravel",
-        "nova"
+        "nova",
+        "tel",
+        "input",
+        "phone"
     ],
     "license": "MIT",
     "require": {

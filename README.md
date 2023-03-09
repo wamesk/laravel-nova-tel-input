@@ -15,9 +15,9 @@ composer require composer require pppcreative/tel-input
 ``` php
 use Ppp\TelInput\TelInput;
 
-TelInput::make(__('cena'), 'price'),
+TelInput::make(__('phone'), 'phone'),
 
-TelInput::make('tel', 'title')->required()->rules('required')
+TelInput::make('tel', 'tel')->required()->rules('required')
     ->showDialCode(true)
     ->preferredCountries(['SK', 'CZ'])
     ->onlyCountries([]),
