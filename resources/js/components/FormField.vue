@@ -1,17 +1,22 @@
 <template>
 
-        <DefaultField
-            :field="field"
-            :errors="errors"
-            :show-help-text="showHelpText"
-            :full-width-content="fullWidthContent"
-        >
+    <DefaultField
+        :field="field"
+        :errors="errors"
+        :show-help-text="showHelpText"
+        :full-width-content="fullWidthContent"
+    >
 
-            <template #field class="bg-green-300 dark:bg-red-400" >
-                <vue-tel-input :theme="theme" id="tel" v-model="phone" mode="national" v-bind="bindProps"></vue-tel-input>
-            </template>
+        <template #field class="bg-green-300 dark:bg-red-400" >
+            <vue-tel-input
+                v-model="phone"
+                mode="national"
+                :id="field.attribute"
+                v-bind="bindProps">
+            </vue-tel-input>
+        </template>
 
-        </DefaultField>
+    </DefaultField>
 
 </template>
 
@@ -32,9 +37,9 @@ export default {
         VueTelInput
     },
 
-  mixins: [FormField, HandlesValidationErrors],
+    mixins: [FormField, HandlesValidationErrors],
 
-  props: ['resourceName', 'resourceId', 'field'],
+    props: ['resourceName', 'resourceId', 'field'],
 
     data(){
         return {
@@ -44,49 +49,58 @@ export default {
                 defaultCountry: "SK",
                 disabledFetchingCountry: false,
                 disabled: false,
+                autoDefaultCountry: true,
                 disabledFormatting: false,
-                placeholder: "nieco number",
+                placeholder: "Tel. číslo",
                 required: false,
-                enabledCountryCode: false,
+                enabledCountryCode: this.field.enabledCountryCode,
                 enabledFlags: true,
-                preferredCountries: ['SK','CZ'],
-                onlyCountries: [],
+                preferredCountries: this.field.preferredCountries,
+                onlyCountries: this.field.onlyCountries,
                 ignoredCountries: [],
                 wrapperClasses: "",
                 inputClasses: "",
+                dropdownOptions: {
+                    disabledDialCode: false,
+                    showFlags: true,
+                },
+                inputOptions: {
+                    showDialCode: this.field.showDialCode,
+                }
             }
         }
     },
 
-  methods: {
-    /*
-     * Set the initial, internal value for the field.
-     */
-    setInitialValue() {
-      this.value = this.field.value || ''
-    },
+    methods: {
+        /*
+         * Set the initial, internal value for the field.
+         */
+        setInitialValue() {
+            this.value = this.field.value || ''
+        },
 
-    /**
-     * Fill the given FormData object with the field's internal value.
-     */
-    fill(formData) {
-      formData.append(this.field.attribute, this.value || '')
-    },
+        /**
+         * Fill the given FormData object with the field's internal value.
+         */
+        fill(formData) {
+            formData.append(this.field.attribute, this.value || '')
+        },
         darkDetector(mutationList, observer) {
-            let self = this
+            let vueTel = document.querySelector('.vue-tel-input input')
             mutationList.forEach(function(mutation) {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                     if (mutation.target.classList.contains('dark')) {
-                        document.querySelector('.vue-tel-input input').classList.add('form-input')
+                        vueTel.classList.add('form-input')
                         document.querySelector('.vue-tel-input').classList.add('form-input-bordered')
                     }
                     else {
-                        document.querySelector('.vue-tel-input input').classList.remove('form-input')
+                        vueTel.classList.remove('form-input')
                     }
                 }
             })
         },
         initDarkDetector(){
+            const vueTel = document.querySelector('.vue-tel-input input')
             const btn = document.querySelector('html')
             const options = {
                 attributes: true
@@ -95,15 +109,14 @@ export default {
             observer.observe(btn, options)
 
             if (localStorage.novaTheme === 'dark' || (!('novaTheme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-               document.querySelector('.vue-tel-input input').classList.add('form-input')
+                vueTel.classList.add('form-input')
             } else {
-                document.querySelector('.vue-tel-input input').classList.remove('form-input')
+                vueTel.classList.remove('form-input')
             }
         },
     },
     mounted() {
         this.initDarkDetector()
-        console.log(moment().format('YYYY-MM-DD' ));
         document.querySelector('.vue-tel-input input').classList.add('form-control')
         document.querySelector('.vue-tel-input').classList.add('form-input-bordered')
         //document.querySelector('.vue-tel-input input').placeholder = 'Tel. číslo'

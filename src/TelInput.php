@@ -1,6 +1,6 @@
 <?php
 
-namespace Wamesk\LaravelNovaTelInput;
+namespace Ppp\TelInput;
 
 use Laravel\Nova\Fields\Field;
 
@@ -12,4 +12,31 @@ class TelInput extends Field
      * @var string
      */
     public $component = 'tel-input';
+
+    public function preferredCountries($value) {
+        return $this->withMeta([
+            'preferredCountries' => $value,
+        ]);
+    }
+
+    public function onlyCountries($value) {
+        return $this->withMeta([
+            'onlyCountries' => $value
+        ]);
+    }
+
+    public function showDialCode($value) {
+        return $this->withMeta([
+            'showDialCode' => $value
+        ]);
+    }
+
+    public function enabledCountryCode($value) {
+        return $this->withMeta([
+            'enabledCountryCode' => $value
+        ]);
+    }
+
+
+
 }
