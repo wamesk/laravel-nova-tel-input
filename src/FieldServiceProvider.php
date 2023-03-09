@@ -1,6 +1,6 @@
 <?php
 
-namespace Wame\TelInput;
+namespace Wamesk\LaravelNovaTelInput;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;

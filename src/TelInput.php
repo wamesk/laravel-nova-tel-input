@@ -1,6 +1,6 @@
 <?php
 
-namespace Wame\TelInput;
+namespace Wamesk\LaravelNovaTelInput;
 
 use Laravel\Nova\Fields\Field;
 

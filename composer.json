@@ -1,5 +1,5 @@
 {
-    "name": "wamesk/tel-input",
+    "name": "wamesk/laravel-nova-tel-input",
     "description": "Nova Tel Input field.",
     "keywords": [
         "laravel",
@@ -11,13 +11,13 @@
     },
     "autoload": {
         "psr-4": {
-            "wame\\TelInput\\": "src/"
+            "wamesk\\LaravelNovaTelInput\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "wame\\TelInput\\FieldServiceProvider"
+                "wamesk\\LaravelNovaTelInput\\FieldServiceProvider"
             ]
         }
     },
