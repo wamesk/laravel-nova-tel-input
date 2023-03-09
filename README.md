@@ -7,7 +7,7 @@
 ## Installation
 
 ``` php
-composer require composer require pppcreative/tel-input
+composer require wamesk/laravel-nova-tel-input
 ```
 
 ## Usage
