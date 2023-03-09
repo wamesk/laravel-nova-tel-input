@@ -7,7 +7,7 @@
             :full-width-content="fullWidthContent"
         >
 
-            <template #field >
+            <template #field class="bg-green-300 dark:bg-red-400" >
                 <vue-tel-input :theme="theme" id="tel" v-model="phone" mode="national" v-bind="bindProps"></vue-tel-input>
             </template>
 
@@ -25,6 +25,8 @@ import { FormField, HandlesValidationErrors } from 'laravel-nova'
 import { VueTelInput } from 'vue-tel-input';
 import 'vue-tel-input/dist/vue-tel-input.css';
 
+import moment from 'moment'
+
 export default {
     components: {
         VueTelInput
@@ -35,7 +37,6 @@ export default {
   props: ['resourceName', 'resourceId', 'field'],
 
     data(){
-        const telInput = document.querySelector('.vue-tel-input input');
         return {
             phone: null,
             bindProps: {
@@ -102,6 +103,7 @@ export default {
     },
     mounted() {
         this.initDarkDetector()
+        console.log(moment().format('YYYY-MM-DD' ));
         document.querySelector('.vue-tel-input input').classList.add('form-control')
         document.querySelector('.vue-tel-input').classList.add('form-input-bordered')
         //document.querySelector('.vue-tel-input input').placeholder = 'Tel. číslo'

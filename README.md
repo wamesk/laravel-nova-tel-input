@@ -1,19 +1,21 @@
 # Laravel Nova Tel Input
 
+
+<img src="img.png">
+
+
 ## Installation
 
 ``` php
-composer require wamesk/laravel-nova-tel-input
+composer require composer require pppcreative/tel-input
 ```
 
 ## Usage
 
 ``` php
-use Wame\TelInput\TelInput;
+use Ppp\TelInput\TelInput;
 
 TelInput::make(__('cena'), 'price'),
 ```
 
-## Licence
 
-The MIT License (MIT). Please see [License File](LICENCE) for more information.

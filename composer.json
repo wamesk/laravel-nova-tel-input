@@ -1,29 +1,28 @@
 {
-    "name": "wamesk/tel-input-field",
-    "description": "Nova Tel Input.",
+    "name": "wamesk/tel-input",
+    "description": "Nova Tel Input field.",
     "keywords": [
         "laravel",
-        "tel",
-        "phone",
-        "input"
+        "nova"
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.0|^8.1|^8.2",
-        "laravel/framework": "^9.0|^10.0",
-        "laravel/nova": "~4.0"
+        "php": "^7.3|^8.0"
     },
     "autoload": {
         "psr-4": {
-            "Wame\\TelInputField\\": "src/"
+            "wame\\TelInput\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Wame\\TelInputField\\FieldServiceProvider"
+                "wame\\TelInput\\FieldServiceProvider"
             ]
         }
+    },
+    "config": {
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true

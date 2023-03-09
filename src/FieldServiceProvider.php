@@ -1,6 +1,6 @@
 <?php
 
-namespace Wame\TelInputField;
+namespace Wame\TelInput;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
@@ -16,8 +16,8 @@ class FieldServiceProvider extends ServiceProvider
     public function boot()
     {
         Nova::serving(function (ServingNova $event) {
-            Nova::script('tel-input-field', __DIR__.'/../dist/js/field.js');
-            Nova::style('tel-input-field', __DIR__.'/../dist/css/field.css');
+            Nova::script('tel-input', __DIR__.'/../dist/js/field.js');
+            Nova::style('tel-input', __DIR__.'/../dist/css/field.css');
         });
     }
 
