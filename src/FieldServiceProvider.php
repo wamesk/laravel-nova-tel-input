@@ -1,6 +1,6 @@
 <?php
 
-namespace Ppp\TelInput;
+namespace Wame\TelInput;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;

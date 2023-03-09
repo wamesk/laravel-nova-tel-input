@@ -3,13 +3,13 @@
 ## Installation
 
 ``` php
-composer require wame/laravel-nova-tel-input
+composer require wamesk/laravel-nova-tel-input
 ```
 
 ## Usage
 
 ``` php
-use Pppcreative\PriceNiceField\PriceNiceField;
+use Wame\TelInput\TelInput;
 
 TelInput::make(__('cena'), 'price'),
 ```
