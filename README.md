@@ -20,7 +20,8 @@ TelInput::make(__('phone'), 'phone'),
 TelInput::make('tel', 'tel')->required()->rules('required')
     ->showDialCode(true)
     ->preferredCountries(['SK', 'CZ'])
-    ->onlyCountries([]),
+    ->onlyCountries([])
+	->placeholder('Tel cislo'),
 ```
 
 <a href="https://vue-tel-input.iamstevendao.com/">Vue Tel Input</a> for Laravel Nova

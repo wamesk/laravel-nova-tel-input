@@ -9,7 +9,7 @@
 
         <template #field class="bg-green-300 dark:bg-red-400" >
             <vue-tel-input
-                v-model="phone"
+                v-model="value"
                 mode="national"
                 :id="field.attribute"
                 v-bind="bindProps">
@@ -30,7 +30,6 @@ import { FormField, HandlesValidationErrors } from 'laravel-nova'
 import { VueTelInput } from 'vue-tel-input';
 import 'vue-tel-input/dist/vue-tel-input.css';
 
-import moment from 'moment'
 
 export default {
     components: {
@@ -43,7 +42,7 @@ export default {
 
     data(){
         return {
-            phone: null,
+            phone: '464686',
             bindProps: {
                 mode: "national",
                 defaultCountry: "SK",
@@ -53,7 +52,7 @@ export default {
                 disabledFormatting: false,
                 placeholder: "Tel. číslo",
                 required: false,
-                enabledCountryCode: this.field.enabledCountryCode,
+                enabledCountryCode: this.field.enabledCountryCode || 'true',
                 enabledFlags: true,
                 preferredCountries: this.field.preferredCountries,
                 onlyCountries: this.field.onlyCountries,
@@ -65,7 +64,8 @@ export default {
                     showFlags: true,
                 },
                 inputOptions: {
-                    showDialCode: this.field.showDialCode,
+                    showDialCode: this.field.showDialCode  || 'true',
+                    placeholder: this.field.placeholder || 'Phone number',
                 }
             }
         }
@@ -85,39 +85,10 @@ export default {
         fill(formData) {
             formData.append(this.field.attribute, this.value || '')
         },
-        darkDetector(mutationList, observer) {
-            let vueTel = document.querySelector('.vue-tel-input input')
-            mutationList.forEach(function(mutation) {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                    if (mutation.target.classList.contains('dark')) {
-                        vueTel.classList.add('form-input')
-                        document.querySelector('.vue-tel-input').classList.add('form-input-bordered')
-                    }
-                    else {
-                        vueTel.classList.remove('form-input')
-                    }
-                }
-            })
-        },
-        initDarkDetector(){
-            const vueTel = document.querySelector('.vue-tel-input input')
-            const btn = document.querySelector('html')
-            const options = {
-                attributes: true
-            }
-            const observer = new MutationObserver(this.darkDetector)
-            observer.observe(btn, options)
-
-            if (localStorage.novaTheme === 'dark' || (!('novaTheme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                vueTel.classList.add('form-input')
-            } else {
-                vueTel.classList.remove('form-input')
-            }
-        },
     },
     mounted() {
-        this.initDarkDetector()
         document.querySelector('.vue-tel-input input').classList.add('form-control')
+        document.querySelector('.vue-tel-input input').classList.add('form-input')
         document.querySelector('.vue-tel-input').classList.add('form-input-bordered')
         //document.querySelector('.vue-tel-input input').placeholder = 'Tel. číslo'
     },

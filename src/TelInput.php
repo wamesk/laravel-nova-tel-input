@@ -31,6 +31,12 @@ class TelInput extends Field
         ]);
     }
 
+    public function placeholder($value) {
+        return $this->withMeta([
+            'placeholder' => $value
+        ]);
+    }
+
     public function enabledCountryCode($value) {
         return $this->withMeta([
             'enabledCountryCode' => $value
