@@ -7,8 +7,11 @@
         :full-width-content="fullWidthContent"
     >
 
+
         <template #field class="bg-green-300 dark:bg-red-400" >
             <vue-tel-input
+                @validate="validationMethod"
+                @focus="checkMethod"
                 v-model="value"
                 :id="field.attribute"
                 v-bind="bindProps">
@@ -16,6 +19,7 @@
         </template>
 
     </DefaultField>
+
 
 </template>
 
@@ -41,6 +45,7 @@ export default {
 
     data(){
         return {
+            validate:'',
             phone: '464686',
             bindProps: {
                 mode: this.field.mode || 'international',
@@ -58,6 +63,7 @@ export default {
                 ignoredCountries: [],
                 wrapperClasses: "",
                 inputClasses: "",
+                validCharactersOnly: "true",
                 dropdownOptions: {
                     disabledDialCode: false,
                     showFlags: true,
@@ -71,6 +77,23 @@ export default {
     },
 
     methods: {
+        validationMethod: function ({ number, valid, country}) {
+            console.log(number)
+            console.log(valid)
+            this.checkMethod(valid)
+            console.log(country)
+        },
+        checkMethod(valid){
+            console.log(valid, 'validacia')
+            let input =  document.querySelector('.vue-tel-input input')
+            if(valid == false){
+                input.style.color="red"
+                input.classList.add('border-red-500')
+            }
+            if(valid == true){
+                input.style.color="white"
+            }
+        },
         /*
          * Set the initial, internal value for the field.
          */
@@ -82,7 +105,7 @@ export default {
          * Fill the given FormData object with the field's internal value.
          */
         fill(formData) {
-            formData.append(this.field.attribute, this.value.replace('+', '00') || '')
+            formData.append(this.field.attribute, (this.value.replace('+', '00')).replaceAll(' ', '') || '')
         },
     },
     mounted() {
