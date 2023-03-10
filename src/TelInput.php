@@ -13,6 +13,11 @@ class TelInput extends Field
      */
     public $component = 'tel-input';
 
+    public function mode($value) {
+        return $this->withMeta([
+            'mode' => $value,
+        ]);
+    }
     public function preferredCountries($value) {
         return $this->withMeta([
             'preferredCountries' => $value,

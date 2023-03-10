@@ -10,7 +10,6 @@
         <template #field class="bg-green-300 dark:bg-red-400" >
             <vue-tel-input
                 v-model="value"
-                mode="national"
                 :id="field.attribute"
                 v-bind="bindProps">
             </vue-tel-input>
@@ -44,7 +43,7 @@ export default {
         return {
             phone: '464686',
             bindProps: {
-                mode: "national",
+                mode: this.field.mode || 'international',
                 defaultCountry: "SK",
                 disabledFetchingCountry: false,
                 disabled: false,
@@ -83,7 +82,7 @@ export default {
          * Fill the given FormData object with the field's internal value.
          */
         fill(formData) {
-            formData.append(this.field.attribute, this.value || '')
+            formData.append(this.field.attribute, this.value.replace('+', '00') || '')
         },
     },
     mounted() {
