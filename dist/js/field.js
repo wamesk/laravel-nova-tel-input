@@ -91,7 +91,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (valid == true) {
-        input.style.color = "white";
+        input.style.color = "initial";
       }
     },
     /*

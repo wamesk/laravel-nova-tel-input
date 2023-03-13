@@ -89,7 +89,7 @@ export default {
                 //input.classList.add('border-red-500')
             }
             if(valid == true){
-                input.style.color="white"
+                input.style.color="initial"
             }
         },
         /*
