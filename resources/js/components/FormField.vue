@@ -46,6 +46,7 @@ export default {
     data(){
         return {
             validate:'',
+            enableValidate: this.field.enableValidate ?? true,
             phone: '464686',
             bindProps: {
                 mode: this.field.mode || 'international',
@@ -56,7 +57,7 @@ export default {
                 disabledFormatting: false,
                 placeholder: "Tel. číslo",
                 required: false,
-                enabledCountryCode: this.field.enabledCountryCode || 'true',
+                enabledCountryCode: this.field.enabledCountryCode ?? 'true',
                 enabledFlags: true,
                 preferredCountries: this.field.preferredCountries,
                 onlyCountries: this.field.onlyCountries,
@@ -69,7 +70,7 @@ export default {
                     showFlags: true,
                 },
                 inputOptions: {
-                    showDialCode: this.field.showDialCode  || 'true',
+                    showDialCode: this.field.showDialCode  ?? 'true',
                     placeholder: this.field.placeholder || 'Phone number',
                 }
             }
@@ -78,17 +79,14 @@ export default {
 
     methods: {
         validationMethod: function ({ number, valid, country}) {
-            console.log(number)
-            console.log(valid)
+            if (this.enableValidate === false) return
             this.checkMethod(valid)
-            console.log(country)
         },
         checkMethod(valid){
-            console.log(valid, 'validacia')
             let input =  document.querySelector('.vue-tel-input input')
             if(valid == false){
                 input.style.color="red"
-                input.classList.add('border-red-500')
+                //input.classList.add('border-red-500')
             }
             if(valid == true){
                 input.style.color="white"
@@ -112,7 +110,6 @@ export default {
         document.querySelector('.vue-tel-input input').classList.add('form-control')
         document.querySelector('.vue-tel-input input').classList.add('form-input')
         document.querySelector('.vue-tel-input').classList.add('form-input-bordered')
-        //document.querySelector('.vue-tel-input input').placeholder = 'Tel. číslo'
     },
 }
 </script>

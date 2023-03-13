@@ -42,8 +42,10 @@ __webpack_require__.r(__webpack_exports__);
   mixins: [laravel_nova__WEBPACK_IMPORTED_MODULE_0__.FormField, laravel_nova__WEBPACK_IMPORTED_MODULE_0__.HandlesValidationErrors],
   props: ['resourceName', 'resourceId', 'field'],
   data: function data() {
+    var _this$field$enableVal, _this$field$enabledCo, _this$field$showDialC;
     return {
       validate: '',
+      enableValidate: (_this$field$enableVal = this.field.enableValidate) !== null && _this$field$enableVal !== void 0 ? _this$field$enableVal : true,
       phone: '464686',
       bindProps: {
         mode: this.field.mode || 'international',
@@ -54,7 +56,7 @@ __webpack_require__.r(__webpack_exports__);
         disabledFormatting: false,
         placeholder: "Tel. číslo",
         required: false,
-        enabledCountryCode: this.field.enabledCountryCode || 'true',
+        enabledCountryCode: (_this$field$enabledCo = this.field.enabledCountryCode) !== null && _this$field$enabledCo !== void 0 ? _this$field$enabledCo : 'true',
         enabledFlags: true,
         preferredCountries: this.field.preferredCountries,
         onlyCountries: this.field.onlyCountries,
@@ -67,7 +69,7 @@ __webpack_require__.r(__webpack_exports__);
           showFlags: true
         },
         inputOptions: {
-          showDialCode: this.field.showDialCode || 'true',
+          showDialCode: (_this$field$showDialC = this.field.showDialCode) !== null && _this$field$showDialC !== void 0 ? _this$field$showDialC : 'true',
           placeholder: this.field.placeholder || 'Phone number'
         }
       }
@@ -78,18 +80,16 @@ __webpack_require__.r(__webpack_exports__);
       var number = _ref.number,
         valid = _ref.valid,
         country = _ref.country;
-      console.log(number);
-      console.log(valid);
+      if (this.enableValidate === false) return;
       this.checkMethod(valid);
-      console.log(country);
     },
     checkMethod: function checkMethod(valid) {
-      console.log(valid, 'validacia');
       var input = document.querySelector('.vue-tel-input input');
       if (valid == false) {
         input.style.color = "red";
-        input.classList.add('border-red-500');
+        //input.classList.add('border-red-500')
       }
+
       if (valid == true) {
         input.style.color = "white";
       }
@@ -111,7 +111,6 @@ __webpack_require__.r(__webpack_exports__);
     document.querySelector('.vue-tel-input input').classList.add('form-control');
     document.querySelector('.vue-tel-input input').classList.add('form-input');
     document.querySelector('.vue-tel-input').classList.add('form-input-bordered');
-    //document.querySelector('.vue-tel-input input').placeholder = 'Tel. číslo'
   }
 });
 

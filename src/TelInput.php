@@ -18,6 +18,12 @@ class TelInput extends Field
             'mode' => $value,
         ]);
     }
+
+    public function enableValidate($value) {
+        return $this->withMeta([
+            'enableValidate' => $value,
+        ]);
+    }
     public function preferredCountries($value) {
         return $this->withMeta([
             'preferredCountries' => $value,
