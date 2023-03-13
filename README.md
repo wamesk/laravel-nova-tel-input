@@ -17,15 +17,16 @@ use Ppp\TelInput\TelInput;
 
 TelInput::make(__('phone'), 'phone'),
 
-TelInput::make('tel', 'tel')->required()->rules('required')
+TelInput::make('tel', 'phone')->required()->rules('required')
     ->preferredCountries(['SK', 'CZ'])
-    ->onlyCountries([])
-	->placeholder('Tel cislo'),
-
-    more options:
-    ->mode('national')  //without +421 | default international 
-    ->showDialCode(false) // default true
-    ->enabledCountryCode(false ) //  default true
+    ->placeholder('Tel cislo')
+    
+      more options:
+    //->onlyCountries([])
+    //->enableValidate(false) // default true
+    //->enabledCountryCode(false)  // default true
+    //->showDialCode(false) // default true
+    //->mode('national')  // (without +421) default international 
 ```
 
 <a href="https://vue-tel-input.iamstevendao.com/">Vue Tel Input</a> for Laravel Nova
