@@ -1,5 +1,5 @@
 <template>
-  <span>{{fieldValue }}</span>
+  <span>{{ fieldValue }}</span>
 </template>
 
 <script>
@@ -12,10 +12,7 @@ export default {
     },
   },
     mounted() {
-        console.log( this.field.value);
-       //  console.log(this.fieldValue);
-        this.field.value = this.field.value.slice(2).replace(/(\d{3})(\d{3})(\d{3})/, '+$1 $2 $3 ');
-         //this.field.value = this.field.value.replace('00', '+');
+        this.field.value = this.field.value.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3 ');
     },
 }
 </script>

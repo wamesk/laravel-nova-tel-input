@@ -11,7 +11,6 @@
         <template #field class="bg-green-300 dark:bg-red-400" >
             <vue-tel-input
                 @validate="validationMethod"
-                @focus="checkMethod"
                 v-model="value"
                 :id="field.attribute"
                 v-bind="bindProps">
@@ -66,6 +65,8 @@ export default {
                 inputClasses: "",
                 validCharactersOnly: "true",
                 dropdownOptions: {
+                    showDialCodeInList: true,
+                    showSearchBox: true,
                     disabledDialCode: false,
                     showFlags: true,
                 },
@@ -86,7 +87,6 @@ export default {
             let input =  document.querySelector('.vue-tel-input input')
             if(valid == false){
                 input.style.color="red"
-                //input.classList.add('border-red-500')
             }
             if(valid == true){
                 input.style.color="initial"
@@ -103,7 +103,7 @@ export default {
          * Fill the given FormData object with the field's internal value.
          */
         fill(formData) {
-            formData.append(this.field.attribute, (this.value.replace('+', '00')).replaceAll(' ', '') || '')
+            formData.append(this.field.attribute, (this.value).replaceAll(' ', '') || '')
         },
     },
     mounted() {

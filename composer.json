@@ -1,12 +1,9 @@
 {
-    "name": "wamesk/tel-input",
-    "description": "Laravel Nova Phone Field.",
+    "name": "wame/tel-input",
+    "description": "A Laravel Nova field.",
     "keywords": [
         "laravel",
-        "nova",
-        "tel",
-        "input",
-        "phone"
+        "nova"
     ],
     "license": "MIT",
     "require": {
@@ -14,13 +11,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Ppp\\TelInput\\": "src/"
+            "Wame\\TelInput\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Ppp\\TelInput\\FieldServiceProvider"
+                "Wame\\TelInput\\FieldServiceProvider"
             ]
         }
     },
