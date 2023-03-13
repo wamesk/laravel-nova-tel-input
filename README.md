@@ -13,7 +13,7 @@ composer require wamesk/laravel-nova-tel-input
 ## Usage
 
 ``` php
-use Ppp\TelInput\TelInput;
+use Wame\TelInput\TelInput;
 
 TelInput::make(__('phone'), 'phone'),
 
